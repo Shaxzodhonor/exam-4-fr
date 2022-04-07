@@ -8,6 +8,11 @@ query{
   }
 }`
 
+const AllComplex = gql`
+query{
+  allComplex
+}`
+
 const getComplex = gql`
 query complex($companyid: ID!){
   complex(id: $companyid){
@@ -58,11 +63,47 @@ mutation createdCompany($name: String!){
   }
 }`
 
+const createComplex = gql`
+mutation createdComplex($name: String! $reference: ID!){
+  createdComplex(name:$name reference: $reference){
+    id
+    name
+    reference
+  }
+}`
+
+const createHouse = gql`
+mutation createHouse(
+  $price: Int! 
+  $rooms: Int!
+  $size: Int!
+	$location: String!
+  $reference: ID!
+) {
+  createHouse(
+    price: $price 
+    rooms: $rooms 
+  	size: $size
+    location: $location
+    reference: $reference
+  ){
+    id
+    size
+    rooms
+    price
+    location
+    reference
+  }
+}`
+
 export  {
   Company,
   getComplex,
   getHouse,
   getBank,
   getCalculate,
-  createCompany  
+  createCompany,
+  createComplex,
+  createHouse,
+  AllComplex 
 };

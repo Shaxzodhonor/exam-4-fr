@@ -13,13 +13,13 @@ function Home () {
   const { data : company, error : companyError, loading: companyLoading } = useQuery(Company);
 
   const {data : allComplex, error : complexError, loading : complexLoading} = useQuery(getComplex, {
-    variables: {companyid: companyId}
+     variables: {companyid: companyId}
   });
   const {data : allHouse, error : houseError, loading : houseLoading} = useQuery(getHouse, {
-    variables: {complexid: complexId}
+    variables: complexId && {complexid: complexId}
   });
   const {data : bank, error : bankError, loading : bankLoading} = useQuery(getBank, {
-    variables: {id: houseId}
+    variables: houseId && {id: houseId}
   });
   const {data : calculation, error : calculateError, loading : calculateLoading} = useQuery(getCalculate, {
     variables: bankDuration && {duration: Number(bankDuration), houseId: houseId, bankId: bank?.bank[0].id }
