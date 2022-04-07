@@ -24,36 +24,32 @@ function Admin() {
   }
 
 
-// complex
-const { data : company,} = useQuery(Company);
+  // complex
+  const { data : company,} = useQuery(Company);
 
-const complexNameRef = useRef()
+  const complexNameRef = useRef()
 
-const [ newComplexFunc] = useMutation(createComplex,{
-  update: (cache, data) => console.log(cache, data)
-})
-function handleComplex(evt) {
-  evt.preventDefault()
-  
-  const { complex, reference } = evt.target.elements;   
-  newComplexFunc({
-    variables: {
-      name: complex.value,
-      reference: reference.value
-    }
-  })  
-  complexNameRef.current.value =""
-}
-
-
+  const [ newComplexFunc] = useMutation(createComplex,{
+    update: (cache, data) => console.log(cache, data)
+  })
+  function handleComplex(evt) {
+    evt.preventDefault()
+    
+    const { complex, reference } = evt.target.elements;   
+    newComplexFunc({
+      variables: {
+        name: complex.value,
+        reference: reference.value
+      }
+    })  
+    complexNameRef.current.value =""
+  }
 
   const houseRooms = useRef()
   const houseSize = useRef()
   const houseLocation = useRef()
   const housePrice = useRef()
 
-  
-  
   const { data : complex } = useQuery(AllComplex);
   const [ newHouseFunc] = useMutation(createHouse,{
     update: (cache, data) => console.log("qo`shildi")
@@ -77,49 +73,51 @@ function handleComplex(evt) {
 
   return (
 
-<div className="admin">
-  <div className='container'>
-    <div className='company'>
-    <form  onSubmit={handleCompany}>
-        <input  ref={companyRef} name='company' type="text" placeholder='New company' />
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
-    <div className='complex'>
-      <form  onSubmit={handleComplex}>
-        <input  ref={complexNameRef} name='complex' type="text" placeholder='Complex name' />
-        <select name='reference' defaultValue={''}>
-          <option value="" disabled>Choose</option>
-          {
-            company?.company?.length > 0 && company.company.map((e,i) =>(
-              <option value={e.id} key={i}>
-                {e.name}
-              </option>
-            ))
-          }
-        </select>
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
-    <div className='house'>
-      <form  onSubmit={handleHouse}>
-        <input  ref={houseRooms} name='rooms' type="number" placeholder='House rooms' />
-        <input  ref={houseSize} name='size' type="number" placeholder='kv/m' />
-        <input  ref={housePrice} name='price' type="number" placeholder='So`m' />
-        <input  ref={houseLocation} name='location' type="text" placeholder='address' />
-        <select name='reference' defaultValue={''}>
-          <option value="" disabled>Choose</option>
-          {
-            complex?.allComplex?.length > 0 && complex.allComplex.map((e,i) =>(
-              <option value={e.complex_id} key={i}>
-                {e.complex_name}
-              </option>
-            ))
-          }
-        </select>
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
+  <div className="admin">
+    <div className='container'>
+      <div className="admin-wrap">
+        <div className='company column'>
+        <form  onSubmit={handleCompany}>
+            <input  ref={companyRef} name='company' type="text" placeholder='New company' />
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+        <div className='complex column'>
+          <form  onSubmit={handleComplex}>
+            <input  ref={complexNameRef} name='complex' type="text" placeholder='Complex name' />
+            <select name='reference' defaultValue={''}>
+              <option value="" disabled>Choose</option>
+              {
+                company?.company?.length > 0 && company.company.map((e,i) =>(
+                  <option value={e.id} key={i}>
+                    {e.name}
+                  </option>
+                ))
+              }
+            </select>
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+        <div className='house column'>
+          <form  onSubmit={handleHouse}>
+            <input  ref={houseRooms} name='rooms' type="number" placeholder='House rooms' />
+            <input  ref={houseSize} name='size' type="number" placeholder='kv/m' />
+            <input  ref={housePrice} name='price' type="number" placeholder='So`m' />
+            <input  ref={houseLocation} name='location' type="text" placeholder='address' />
+            <select name='reference' defaultValue={''}>
+              <option value="" disabled>Choose</option>
+              {
+                complex?.allComplex?.length > 0 && complex.allComplex.map((e,i) =>(
+                  <option value={e.complex_id} key={i}>
+                    {e.complex_name}
+                  </option>
+                ))
+              }
+            </select>
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 

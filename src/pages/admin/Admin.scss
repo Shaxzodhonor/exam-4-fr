@@ -1,0 +1,20 @@
+.admin-wrap {
+  display: flex;
+  justify-content: space-around;
+  .column{
+    width: calc(33% - 40px);
+    padding-top: 30px;
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      
+      input, select, button {
+        padding: 6px 15px;
+        border-radius: 6px;
+        border: 2px solid crimson;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
