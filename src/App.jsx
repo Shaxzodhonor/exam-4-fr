@@ -13,8 +13,8 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
-        <Route path="/admin"><Admin></Admin></Route>
         <Route path="/" exact><Home></Home></Route>
+        <Route path="/admin"><Admin></Admin></Route>
       </Switch>
     </div>
   );
