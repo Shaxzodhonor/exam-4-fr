@@ -69,6 +69,11 @@ function Admin() {
         reference: String(reference.value)
       }
     })
+
+    houseRooms.current.value = ''
+    houseSize.current.value = ''
+    houseLocation.current.value = ''
+    housePrice.current.value = ''
   }
 
   return (
