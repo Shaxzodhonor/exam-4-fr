@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/admin"><Admin></Admin></Route>
-        <Route path="/"><Home></Home></Route>
+        <Route path="/" exact><Home></Home></Route>
       </Switch>
     </div>
   );

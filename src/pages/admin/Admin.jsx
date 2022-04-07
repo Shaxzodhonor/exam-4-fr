@@ -13,7 +13,7 @@ function Admin() {
     update: (cache, data) => console.log("qo`shildi")
   })  
   function handleCompany(evt) {
-    // evt.preventDefault()
+    evt.preventDefault()
     const { company } = evt.target.elements;
     newCompanyFunc({
       variables: {
@@ -55,7 +55,7 @@ function Admin() {
     update: (cache, data) => console.log("qo`shildi")
   })
   function handleHouse(evt){  
-    // evt.preventDefault()
+    evt.preventDefault()
     
     const { rooms, size, price, location, reference } = evt.target.elements;
 
